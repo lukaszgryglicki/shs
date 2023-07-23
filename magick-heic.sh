@@ -78,5 +78,9 @@ then
     HOPTS='-b ${HIBITS} -L'
   fi
 fi
+if [ "${HFN}" = "avif" ]
+then
+  HOPTS="${HOPTS} -A"
+fi
 echo "heif-enc ${HOPTS} ${png} -o ${heif}"
 time heif-enc ${HOPTS} "${png}" -o "${heif}" && rm -f "${png}"
