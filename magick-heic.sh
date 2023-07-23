@@ -78,6 +78,5 @@ then
     HOPTS='-b ${HIBITS} -L'
   fi
 fi
-ls -l "${png}"
 echo "heif-enc ${HOPTS} ${png} -o ${heif}"
 time heif-enc ${HOPTS} "${png}" -o "${heif}" && rm -f "${png}"
