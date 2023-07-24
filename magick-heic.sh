@@ -17,7 +17,8 @@ base=`basename "${1}"`
 png=`echo "${base}" | cut -f 1 -d .`.png
 if [ -z "${HFN}" ]
 then
-  HFN="heic"
+  # HFN="heic"
+  HFN="avif"
 fi
 heif=`echo "${base}" | cut -f 1 -d .`".${HFN}"
 if [ ! -z "${PREFIX}" ]
