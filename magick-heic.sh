@@ -24,6 +24,7 @@ heif=`echo "${base}" | cut -f 1 -d .`".${HFN}"
 if [ ! -z "${PREFIX}" ]
 then
   png="${PREFIX}${png}"
+  heif="${PREFIX}${heif}"
 fi
 if [ "${png}" = "${1}" ]
 then
