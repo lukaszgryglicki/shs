@@ -1,13 +1,14 @@
 #!/bin/bash
 # CONTRAST=1
-# QUALITY=90
+# QUALITY=80
 # PREFIX=./out/
 # OVERWRITE=1
 # CM='1,0,0,0,1,0,0,0,1'
 # OPTS='-separate -enhance -auto-gamma -contrast-stretch 5%x1% -equalize -normalize -white-balance -combine'
-# HOPTS='-b 12 -quality 90%'
-# HBITS=12
+# HOPTS='-b 12 -quality 80%'
+# HBITS=10
 # HFN=heic|avif
+# KEEP_PNG=
 # LL=1
 # ONLY_OPTS=1
 # matrix: 0.4, 0, 0,
@@ -47,7 +48,8 @@ then
 fi
 if [ -z "${QUALITY}" ]
 then
-  QUALITY="90"
+  # QUALITY="90"
+  QUALITY="80"
 fi
 if [ -z "${CM}" ]
 then
@@ -55,7 +57,8 @@ then
 fi
 if [ -z "${HBITS}" ]
 then
-  HBITS="12"
+  # HBITS="12"
+  HBITS="10"
 fi
 if [ -z "${OPTS}" ]
 then
@@ -85,4 +88,8 @@ then
   HOPTS="${HOPTS} -A"
 fi
 echo "heif-enc ${HOPTS} ${png} -o ${heif}"
-time heif-enc ${HOPTS} "${png}" -o "${heif}" && rm -f "${png}"
+time heif-enc ${HOPTS} "${png}" -o "${heif}"
+if [ -z "${KEEP_PNG}" ]
+then
+  rm -f "${png}"
+fi
