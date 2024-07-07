@@ -1,7 +1,7 @@
 #!/bin/bash
 # CONTRAST=1
 # JP2='' (set to 1 to use JEPG2000)
-# QUALITY=85 (for JPG) 40 (For JP2)
+# QUALITY=85 (for JPG) 41 (For JP2)
 # DEPTH=12 (only when JP2 (JPEG2000) is used otherwise it is 8 (only possible for normal JPG)
 # REV='' (set to 1 to do RGB -> BGR)
 # PREFIX=./out/
