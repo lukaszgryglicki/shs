@@ -32,7 +32,7 @@ do
   if [ ! -f "${sfn}" ]
   then
     echo "($i/$len) mpv '$f'"
-    mpv -window-scale=2 --osd-level=3 "${f}"
+    mpv --really-quiet -window-scale=1.5 --osd-level=3 "${f}"
     result=$?
     if [ ! "${result}" = "0" ]
     then
@@ -99,3 +99,4 @@ if [ ! -z "${MERGE}" ]
 then
   ./merge_same_format.sh
 fi
+echo 'All done.'

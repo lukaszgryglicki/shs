@@ -34,6 +34,10 @@ then
   ary=(${2//:/ })
   m=${ary[0]}
   s=${ary[1]}
+  if [ "${s:0:1}" = "0" ]
+  then
+    s="${s:1}"
+  fi
   m2=$m
   s2=$s
   s=$((s-OFFSET1))
@@ -69,6 +73,6 @@ else
   END="${3}"
 fi
 # -re - limits encoding speed to max 1x (simulates streaming)
-echo "Cropping from $START to $END"
-ffmpeg -y -threads 8 -ss "${START}" -to "${END}" -i "${1}" -c:v libx264 -vf "scale=${WIDTH}:${HEIGHT}:force_original_aspect_ratio=decrease,pad=${WIDTH}:${HEIGHT}:x=(${WIDTH}-iw)/2:y=(${HEIGHT}-ih)/2:color=black" -crf 22 -preset fast -r 100 -c:a aac -b:a 64k -ar 22050 "${PREFIX}${1}.mp4"
-echo "Cropped from $START to $END"
+echo "cropping from $START to $END"
+ffmpeg -nostats -loglevel 0 -y -threads 8 -ss "${START}" -to "${END}" -i "${1}" -c:v libx264 -vf "scale=${WIDTH}:${HEIGHT}:force_original_aspect_ratio=decrease,pad=${WIDTH}:${HEIGHT}:x=(${WIDTH}-iw)/2:y=(${HEIGHT}-ih)/2:color=black" -crf 22 -preset fast -r 100 -c:a aac -b:a 64k -ar 22050 "${PREFIX}${1}.mp4"
+echo "cropped from $START to $END"
